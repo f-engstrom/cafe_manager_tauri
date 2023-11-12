@@ -23,6 +23,7 @@
   "dependencies": {
     "@solidjs/router": "^0.8.2",
     "@supabase/supabase-js": "^2.21.0",
+    "@tauri-apps/api": "^1.5.1",
     "clsx": "^1.2.1",
     "solid-js": "^1.6.10"
   }
