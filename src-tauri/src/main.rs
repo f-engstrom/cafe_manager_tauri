@@ -3,7 +3,7 @@
 mod commands;
 pub mod models;
 pub mod schema;
-use commands::{get_from_expiration, get_products};
+use commands::{add_to_expiration, add_to_products, get_from_expiration, get_products};
 mod db;
 
 fn main() {
@@ -12,7 +12,12 @@ fn main() {
             db::init();
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![get_products, get_from_expiration])
+        .invoke_handler(tauri::generate_handler![
+            get_products,
+            add_to_products,
+            get_from_expiration,
+            add_to_expiration
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

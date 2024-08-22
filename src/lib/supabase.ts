@@ -42,15 +42,24 @@ export const addToExpiration = async ({
   note,
 }: NewProduct) => {
   console.log("hallåman", product);
-  return supabase
-    .from("product_expiration")
-    .insert({ product, exp_date, start_date, note });
+  invoke("add_to_expiration", {
+    product: {
+      id: 123,
+      exp_date: exp_date,
+      start_date: start_date,
+      note: note,
+    },
+  }).then((response) => console.log(response));
+  // return supabase
+  //   .from("product_expiration")
+  //   .insert({ product, exp_date, start_date, note });
 };
 export const addProduct = async ({ product_name, expiration_days }) => {
-  return supabase.from("products").insert({
-    product_name,
-    expiration_days,
-  });
+  invoke("add_to_products");
+  // return supabase.from("products").insert({
+  //   product_name,
+  //   expiration_days,
+  // });
 };
 export const updateProduct = async ({ product_name, expiration_days, id }) => {
   return supabase
